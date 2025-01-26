@@ -1,0 +1,155 @@
+<!-- <p>project name</p>
+<p>list of project's tasks</p>
+<h6>{{projectName}}</h6>
+ -->
+<div *ngIf="!projectData">
+    <p>select project</p>
+</div>
+<div class="projectDte" *ngIf="projectData">
+    <div class="title">
+      <h5>{{ projectName }}</h5>
+      <div class="dropdown">
+        <button
+          class="btn btn-drop dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton1"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        ></button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li>
+            <a
+              class="dropdown-item"
+              (click)="OnUpdateProjectPopup()"
+              data-bs-toggle="modal"
+              data-bs-target="#projectModal"
+              aria-hidden="true"
+              >Edit</a
+            >
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              (click)="onDeletePopup()"
+              data-bs-toggle="modal"
+              data-bs-target="#deleteModelproj"
+              >Delete</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <app-task-list [projectId]="projectId"></app-task-list>
+  </div>
+
+   <!-- edit Modal -->
+   <div
+   class="modal fade"
+   id="projectModal"
+   tabindex="-1"
+   aria-labelledby="projectModalLabel"
+   aria-hidden="false"
+   aria-modal="true"
+ >
+   <div class="modal-dialog">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h1 class="modal-title fs-5" id="projectModalLabel">
+           {{ !addEditProject ? "Add" : "update" }} update Project
+         </h1>
+         <button
+           type="button"
+           class="btn-close"
+           data-bs-dismiss="modal"
+           aria-label="Close"
+         ></button>
+       </div>
+       <div class="modal-body">
+         <form [formGroup]="ProjectForm">
+           <div class="row">
+             <div class="form-group mb-2">
+               <label>Name</label>
+               <input
+                 type="text"
+                 class="form-control"
+                 formControlName="name"
+                 [ngClass]="{
+                   'is-invalid': addEditProject && f['name'].errors
+                 }"
+               />
+
+               <div
+                 *ngIf="addEditProject && f['name'].errors"
+                 class="invalid-feedback"
+               >
+                 <div *ngIf="f['name'].errors['required']">
+                   name is required
+                 </div>
+               </div>
+             </div>
+           </div>
+         </form>
+       </div>
+
+       <div class="modal-footer">
+         <button
+           type="button"
+           class="btn btn-secondary"
+           data-bs-dismiss="modal"
+           #closeUpdateAdd
+         >
+           Close
+         </button>
+
+         <!-- <button
+       type="submit"
+       class="btn btn-primary"
+       (click)="addNewProject()"
+       *ngIf="!addEditProject"
+       [disabled]="!ProjectForm.valid"
+     >
+       Add
+     </button> -->
+
+         <button
+           type="button"
+           class="btn btn-primary"
+           (click)="updateProject()"
+           *ngIf="addEditProject"
+           [disabled]="!ProjectForm.valid"
+         >
+           Update
+         </button>
+       </div>
+     </div>
+   </div>
+ </div>
+ <!-- delete Modal -->
+
+ <div
+   class="modal fade"
+   id="deleteModelproj"
+   tabindex="-1"
+   aria-labelledby="deleteModelprojLabel"
+   aria-hidden="false"
+ >
+   <div class="modal-dialog">
+     <div class="modal-content">
+       <div class="modal-body">Are you sure you want do delete this item?</div>
+       <div class="modal-footer">
+         <button
+           type="button"
+           class="btn btn-secondary"
+           #closebutton
+           data-bs-dismiss="modal"
+         >
+           Close
+         </button>
+         <button type="button" class="btn btn-danger" (click)="deletProject()">
+           Delete
+         </button>
+       </div>
+     </div>
+   </div>
+ </div>

@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <h5>task count per project :</h5>
+      <app-num-tasks-per-project [chartData]="chartData" />
+    </div>
+
+    <div class="col-6">
+      <h5>task count per status :</h5>
+      <!-- <app-num-tasks-per-project [chartData]="chartData" /> -->
+      <app-tasks-per-status [taskPerStauschartData]="taskPerStauschartData"/>
+    </div>
+  </div>
+</div>

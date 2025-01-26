@@ -1,0 +1,54 @@
+.disabled {
+  /* pointer-events:none;  */
+  opacity: 0.6;
+}
+
+.disabled .dropdown>ul {
+  display: none;
+}
+
+.disabled .expired {
+  color: #000;
+}
+
+.expired {
+  color: #ff5757;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  /* Removes default checkbox styling */
+  -webkit-appearance: none;
+  /* For Safari */
+  width: 20px;
+  height: 20px;
+  border: 2px solid #555;
+  border-radius: 50%;
+  /* Makes the checkbox circular */
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #4caf50;
+  /* Checked color */
+  border-color: #4caf50;
+}
+
+input[type="checkbox"]:checked::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.table th,
+.table td {
+  font-size: 13px;
+}

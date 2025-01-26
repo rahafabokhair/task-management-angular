@@ -1,0 +1,162 @@
+.projectList {}
+
+.projectListItem {}
+
+.projectListItem .item-div {
+  display: flex;
+  align-items: center;
+  padding-block: 7px;
+  padding-inline-end: 38px;
+  border-radius: 4px;
+  width: 100%;
+  margin: 5px;
+  padding-inline-start: 20px;
+  transition: all ease-in-out 0.5s;
+}
+
+
+
+.item-div.active {
+  border: 2px solid #d400ff75;
+  box-shadow: none;
+}
+
+.item-div p {
+  font-size: 17px;
+  margin: 0;
+  margin-left: 10px;
+  color: #44425a;
+  ;
+}
+
+.MultiColorIcon--medium {
+  width: 24px;
+  height: 24px;
+  color: #fff;
+
+
+}
+
+.MultiColorIcon {
+  color: #fff;
+}
+
+.MultiColorIcon-path--white {
+  fill: #fff;
+}
+
+.item-div .item-div-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+
+.ChipWithIcon {
+  background-color: #b332c4;
+  border-radius: 12px;
+  flex-direction: column;
+  flex: none;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  box-shadow: inset 0 -2px rgba(0, 0, 0, .05);
+}
+
+.item-div:hover {
+  background: #ecb9f3;
+  color: #fff;
+  transform: translateY(-5px);
+}
+
+/* .item-div p:hover {
+  color: #fff;
+} */
+
+/* .projectListItem .item-div p {
+  color: #f4f4f4;
+} */
+li {
+  list-style-type: none;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+li:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+li p {
+  margin: 0;
+  padding: 5px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+select option {
+  padding: 10px;
+}
+
+select option:disabled {
+  color: #bbb;
+}
+
+li ul {
+  margin-top: 10px;
+  padding-left: 20px;
+  border-left: 2px solid #eee;
+}
+
+ li ul li {
+  border: none;
+  box-shadow: none;
+  padding: 5px 0;
+  margin: 0;
+}
+
+ li ul li p {
+  font-size: 13px;
+  color: #666;
+}
+
+.list-item-div {
+  display: flex !important;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.list-item-div span {
+  color: #b30000;
+  cursor: pointer;
+}

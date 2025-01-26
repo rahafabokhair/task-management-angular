@@ -1,0 +1,19 @@
+.projectDte .title {
+    color: #701e7b;
+    margin-bottom:20px ;
+    display: flex !important
+  ;
+      align-items: center;
+  
+  }
+  
+  .btn-drop:active{
+  border: none;
+  }
+  
+  
+  .btn-check:checked + .btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check) + .btn:active,.btn:focus, .btn.focus{
+    background-color: #dddddd85;
+    border: none;
+    box-shadow:none
+  }

@@ -1,0 +1,55 @@
+.item-div {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding-block: 7px;
+  padding-inline-end: 38px;
+  border-radius: 4px;
+  /* width: auto; */
+  width: 100%;
+  box-shadow: -1px 4px 11px 0px #dddddd;
+  margin: 5px;
+  padding-inline-start: 20px;
+  border: 1px solid #f4f4f4;
+  transition: all ease-in-out 0.5s;
+}
+
+.item-div.active {
+  border: 2px solid #d400ff75;
+  box-shadow: none;
+}
+.item-div p {
+  font-size: 17px;
+  margin: 0;
+}
+
+.item-div:hover {
+  box-shadow: none;
+  background: #b332c4;
+  color: #fff ;
+  transform: translateY(-5px);
+}
+
+.item-div p:hover {
+  color: #fff ;
+}
+.admin-side {
+  /* background-color: #e4f0fb; */
+  display: flex;
+  flex-direction: column;
+}
+.ProjectNavList a{
+  color: #a97ed9;
+  transition: all ease-in-out 0.5s;
+}
+
+.ProjectNavList a:hover{
+  color: #44425a;
+  transform: translateY(-2px);
+}
+
+.ProjectNavList i{
+  font-size: 8px;
+  padding-inline-end: 10px;
+  color: #858486;
+}

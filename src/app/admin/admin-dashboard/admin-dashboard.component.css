@@ -1,0 +1,32 @@
+.item-div {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding-block: 7px;
+  padding-inline-end: 38px;
+  border-radius: 4px;
+  width: auto;
+  box-shadow: -1px 4px 11px 0px #dddddd;
+  margin: 5px;
+  padding-inline-start: 20px;
+  border: 1px solid #f4f4f4;
+}
+
+.item-div.active {
+  border: 2px solid #d400ff75;
+  box-shadow: none;
+}
+.item-div p {
+  font-size: 17px;
+
+}
+
+.item-div:hover {
+  box-shadow: none;
+  background: #f4f2f2;
+}
+
+.admin-side {
+  display: flex;
+  flex-direction: column;
+}

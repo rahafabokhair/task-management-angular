@@ -1,0 +1,26 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-3 admin-side">
+      <a
+        class="d-inline-block item-div"
+        routerLink="user"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLinkActive="active"
+      >
+        <p class="text-purple">Users</p>
+      </a>
+
+      <a
+      class="d-inline-block item-div"
+      routerLink="user"
+      routerLinkActive="active"
+    >
+      <p class="text-purple">test</p>
+    </a>
+    </div>
+
+    <div class="col-9">
+      <router-outlet />
+    </div>
+  </div>
+</div>

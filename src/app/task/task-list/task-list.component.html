@@ -1,0 +1,271 @@
+<div class="container">
+  <div class="row">
+    <div>
+      <button
+        type="button"
+        class="btn btn-primary mb-2"
+        data-bs-toggle="modal"
+        data-bs-target="#subModal"
+        (click)="OnAddTaskPopup()"
+      >
+        + Add task
+      </button>
+    </div>
+    @if (this.taskList.length>0) {
+    <table class="table">
+      <thead>
+        <tr >
+          <th scope="col">#</th>
+          <th scope="col">completed?</th>
+          <th scope="col">Name</th>
+          <th scope="col">End Date</th>
+          <th scope="col">Status</th>
+          <th scope="col">Project</th>
+          <th scope="col">collaboraters</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of taskList|filterTaskPerProjId:projectId; track $index) {
+        <tr [class.disabled]="item.checkCompleted">
+          <th scope="row">{{ item.id }}</th>
+          <td>
+            <input
+              [(ngModel)]="item.checkCompleted"
+              type="checkbox"
+              (change)="onCheckboxChange(item, $index)"
+            />
+          </td>
+          <td>{{ item.name }}</td>
+          <td [class.expired]="checkIfTaskExpired(item.endDate)">{{ item.endDate}}</td>
+          <td>{{ item.status.name }}</td>
+          <td>
+            <p *ngIf="item.projectid">
+              {{ projectList | projectFilter : item.projectid}}
+            </p>
+          </td>
+          <td>
+            <div class="dropdown">
+              <span>add user</span>
+              <button
+                class="btn btn-drop dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              ></button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                @for (userItem of users; track $index) {
+                <li
+                  [ngClass]="{
+                    disabled: item.assignedUsers.includes(userItem.id!)
+                  }"
+                >
+                  <a
+                    class="dropdown-item"
+                    (click)="assignToUser(userItem.id!, item)"
+                    >{{ userItem.name }}</a
+                  >
+                </li>
+                }
+              </ul>
+            </div>
+          </td>
+          <td>
+            <span
+              (click)="OnUpdateSubPopup(item.id!)"
+              data-bs-toggle="modal"
+              data-bs-target="#subModal"
+              aria-hidden="true"
+            >
+              <i class="fa fa-pencil fa-lg m-1"></i>
+            </span>
+
+            <span
+              (click)="onDeletePopup(item.id!)"
+              data-bs-toggle="modal"
+              data-bs-target="#deleteModel"
+              ><i class="fa fa-trash fa-lg m-1"></i>
+            </span>
+          </td>
+        </tr>
+
+        }
+      </tbody>
+    </table>
+    }
+    <div
+      class="modal fade"
+      id="subModal"
+      tabindex="-1"
+      aria-labelledby="subModalLabel"
+      aria-hidden="false"
+      aria-modal="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="subModalLabel">
+              {{ !addEditTask ? "Add" : "update" }} New Task
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="taskForm">
+              <div class="row">
+                <div class="form-group mb-2">
+                  <label>Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="name"
+                    [ngClass]="{
+                      'is-invalid': addEditTask && f['name'].errors
+                    }"
+                  />
+
+                  <div
+                    *ngIf="addEditTask && f['name'].errors"
+                    class="invalid-feedback"
+                  >
+                    <div *ngIf="f['name'].errors['required']">
+                      name is required
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 form-group mb-1">
+                  <label>Project</label>
+
+                  <div class="mb-3">
+                    <select class="form-select" formControlName="project">
+                      <option
+                        *ngFor="let item of projectList | filter : projectId"
+                        [ngValue]="item.id"
+                      >
+                        {{ item.name }}
+                      </option>
+                    </select>
+
+                    <div
+                      class="invalid-feedback"
+                      *ngIf="addEditTask && f['project']?.errors"
+                      class="invalid-feedback"
+                    >
+                      <sup>*</sup>Please enter your Project name
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-12 form-group mb-1">
+                  <label>Status</label>
+
+                  <div class="mb-3">
+                    <select class="form-select" formControlName="status">
+                      <option *ngFor="let item of statusList" [ngValue]="item">
+                        {{ item.name }}
+                      </option>
+                    </select>
+
+                    <div
+                      class="invalid-feedback"
+                      *ngIf="addEditTask && f['status']?.errors"
+                      class="invalid-feedback"
+                    >
+                      <sup>*</sup>Please enter your task status or stage name
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-6 form-group">
+                  <label class="control-label">End Date</label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    formControlName="endDate"
+                    style="width: auto"
+                    [ngClass]="{
+                      'is-invalid': addEditTask && f['endDate'].errors
+                    }"
+                  />
+
+                  <div
+                    *ngIf="addEditTask && f['endDate'].errors"
+                    class="invalid-feedback"
+                  >
+                    <div *ngIf="f['endDate'].errors['required']">
+                      date is required
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              #closeUpdateAdd
+            >
+              Close
+            </button>
+
+            <button
+              type="submit"
+              class="btn btn-primary"
+              (click)="addNewTask()"
+              *ngIf="!addEditTask"
+              [disabled]="!taskForm.valid"
+            >
+              Add
+            </button>
+
+            <button
+              type="button"
+              class="btn btn-primary"
+              (click)="updateTask()"
+              *ngIf="addEditTask"
+              [disabled]="!taskForm.valid"
+            >
+              Update
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Delete Modal -->
+<div
+  class="modal fade"
+  id="deleteModel"
+  tabindex="-1"
+  aria-labelledby="deleteModelLabel"
+  aria-hidden="false"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">Are you sure you want do delete this item?</div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          #closebutton
+          data-bs-dismiss="modal"
+        >
+          Close
+        </button>
+        <button type="button" class="btn btn-danger" (click)="deleteTask()">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
