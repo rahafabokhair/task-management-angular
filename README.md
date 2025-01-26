@@ -1,4 +1,4 @@
-# angular-ecommerce
+# Task-management angular
 
 Task management portal where user can manage projects and tasks
 
