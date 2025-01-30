@@ -26,18 +26,27 @@ npm install -g json-server (Install JSON mock server)
 ### Step 7: 
 npm install -g @angular/cli  (Install angular CLI)
 
-### Step 8: 
+### Step 8: To add Charts
+npm install @types/chart.js 
+
+### Step 9:
+ng add ng2-charts
+
+### Step 10: To add Calendar
+npm install @fullcalendar/angular @fullcalendar/core @fullcalendar/daygrid @fullcalendar/timegrid
+
+### Step 11: 
 Open two terminal/command prompt
 
-### Step 9: 
+### Step 12: 
 In one run command: ng serve
 
-### Step 10:
+### Step 13:
 Another one run command: json-server --watch db.json
 
 Now you can ready to go
 
-### Step 11: 
+### Step 14: 
 Open your browser and type: http://localhost:4200
 
 If you want to see the mock api on your browser you can hit the link: http://localhost:3000/
