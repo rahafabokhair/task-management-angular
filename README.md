@@ -1,27 +1,57 @@
-# ProjectAngular
+# Task-management angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.10.
+Task management portal where user can manage projects and tasks
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Project Setup:
 
-## Code scaffolding
+### Step 1:  
+clone the project: git clone https://github.com/rahafabokhair/task-management-angular.git
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Step 2: 
+cd task-management-angular
 
-## Build
+### Step 3: 
+git pull origin master
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Step 4:
+Install Node form https://nodejs.org/en/
 
-## Running unit tests
+### Step 5: 
+npm install
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Step 6: 
+npm install -g json-server (Install JSON mock server)
 
-## Running end-to-end tests
+### Step 7: 
+npm install -g @angular/cli  (Install angular CLI)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Step 8: To add Charts
+npm install @types/chart.js 
 
-## Further help
+### Step 9:
+ng add ng2-charts
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Step 10: To add Calendar
+npm install @fullcalendar/angular @fullcalendar/core @fullcalendar/daygrid @fullcalendar/timegrid
+
+### Step 11: 
+Open two terminal/command prompt
+
+### Step 12: 
+In one run command: ng serve
+
+### Step 13:
+Another one run command: json-server --watch db.json
+
+Now you can ready to go
+
+### Step 14: 
+Open your browser and type: http://localhost:4200
+
+If you want to see the mock api on your browser you can hit the link: http://localhost:3000/
+
+If you want to learn more on mock API you can go through the doc https://www.npmjs.com/package/json-server
+
+## Project Documentation:
+https://docs.google.com/document/d/1-2apZl2c3blESKcTMekGRv4LUjelFrXLHHcF54mRHxs/edit?usp=sharing
