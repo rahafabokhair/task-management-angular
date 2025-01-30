@@ -11,6 +11,7 @@ import { ProjectDetailsComponent } from './project/project-details/project-detai
 import { TaskListComponent } from './task/task-list/task-list.component';
 import { ChartHomeComponent } from './chart/chart-home/chart-home.component';
 import { NumTasksPerProjectComponent } from './chart/num-tasks-per-project/num-tasks-per-project.component';
+import { CalendarComponent } from './calender/calendar/calendar.component';
 
 export const routes: Routes = [
   {
@@ -21,7 +22,8 @@ export const routes: Routes = [
       { path: 'project', component: ProjectHomeComponent },
       { path: 'project/:id', component: ProjectDetailsComponent },
       { path: 'task', component: TaskListComponent },
-      { path: 'charthome', component: ChartHomeComponent }
+      { path: 'charthome', component: ChartHomeComponent },
+       { path: 'calendar', component: CalendarComponent },
     ],
   },
 

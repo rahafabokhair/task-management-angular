@@ -232,7 +232,7 @@ export class TaskListComponent {
 
 
   checkIfTaskExpired(endDate: string): boolean {
-    const currentDate = new Date(); // Get the current date
+    const currentDate = new Date();
     const taskEndDate = new Date(endDate); // Convert endDate string to a Date object
   
     return currentDate > taskEndDate; // Return true if current date is greater than end date
